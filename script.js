@@ -206,11 +206,11 @@
             
             // Get form values
             const templateParams = {
-                name = document.getElementById('name').value,
-                email = document.getElementById('email').value,
-                phone = document.getElementById('phone').value,
-                eventType = document.getElementById('event-type').value,
-                message = document.getElementById('message').value,
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                eventType: document.getElementById('event-type').value,
+                message: document.getElementById('message').value,
                 year: new Date().getFullYear(),
             }
                     
