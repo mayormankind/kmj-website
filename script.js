@@ -205,16 +205,27 @@
             e.preventDefault();
             
             // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const eventType = document.getElementById('event-type').value;
-            const message = document.getElementById('message').value;
-            
-            // Here you would typically send this data to your server
-            console.log('Form submitted:', { name, email, phone, eventType, message });
-            
-            // Show success message (in a real app, you'd want to handle errors too)
-            alert('Thank you for your message! We will get back to you shortly.');
-            contactForm.reset();
+            const templateParams = {
+                name = document.getElementById('name').value,
+                email = document.getElementById('email').value,
+                phone = document.getElementById('phone').value,
+                eventType = document.getElementById('event-type').value,
+                message = document.getElementById('message').value,
+                year: new Date().getFullYear(),
+            }
+                    
+            // send this data to your email
+            emailjs.send(
+                "service_vcutf9w",
+                "template_5d5j77t",
+                templateParams
+            )
+            .then(() => {
+                alert("Thank you for your message! We’ll get back to you shortly.");
+                contactForm.reset();
+             })
+             .catch((error) => {
+                 console.error("Email failed:", error);
+                 alert("Something went wrong. Please try again.");
+             });
         });
