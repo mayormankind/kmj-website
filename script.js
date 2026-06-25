@@ -175,30 +175,95 @@
             }
         ];
         
-        // Generate testimonials
-        const testimonialsContainer = document.querySelector('#testimonials .grid');
-        testimonials.forEach(testimonial => {
-            const testimonialCard = document.createElement('div');
-            testimonialCard.className = 'testimonial-card bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md transition-all duration-300';
-            testimonialCard.innerHTML = `
-                <div class="flex items-center mb-4">
-                    ${Array(testimonial.rating).fill('<i class="fas fa-star text-yellow-400"></i>').join('')}
-                    ${Array(5 - testimonial.rating).fill('<i class="far fa-star text-yellow-400"></i>').join('')}
-                </div>
-                <p class="text-gray-600 dark:text-gray-300 mb-6">"${testimonial.content}"</p>
-                <div class="flex items-center">
-                    <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mr-4">
-                        <i class="fas fa-user text-primary"></i>
+        // Generate testimonials carousel
+        const testimonialsTrack = document.getElementById('testimonials-track');
+        const testimonialDotsEl = document.getElementById('testimonial-dots');
+        const prevBtn = document.getElementById('prev-testimonial');
+        const nextBtn = document.getElementById('next-testimonial');
+        let currentTestimonial = 0;
+
+        function getVisibleCount() {
+            if (window.innerWidth >= 1024) return 3;
+            if (window.innerWidth >= 768)  return 2;
+            return 1;
+        }
+
+        if (testimonialsTrack) {
+            testimonials.forEach((testimonial, idx) => {
+                const slide = document.createElement('div');
+                slide.className = 'testimonial-slide';
+                slide.innerHTML = `
+                    <div class="testimonial-card bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md transition-all duration-300 h-full">
+                        <div class="flex items-center mb-4">
+                            ${Array(testimonial.rating).fill('<i class="fas fa-star text-yellow-400"></i>').join('')}
+                            ${Array(5 - testimonial.rating).fill('<i class="far fa-star text-yellow-400"></i>').join('')}
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-6">"${testimonial.content}"</p>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-user text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">${testimonial.name}</h4>
+                                <p class="text-sm text-gray-500">${testimonial.role}</p>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <h4 class="font-bold">${testimonial.name}</h4>
-                        <p class="text-sm text-gray-500">${testimonial.role}</p>
-                    </div>
-                </div>
-            `;
-            testimonialsContainer.appendChild(testimonialCard);
-        });
+                `;
+                testimonialsTrack.appendChild(slide);
+
+                const dot = document.createElement('button');
+                dot.className = `w-3 h-3 rounded-full border-none cursor-pointer transition-all duration-300 ${idx === 0 ? 'bg-primary' : 'bg-gray-300'}`;
+                dot.addEventListener('click', () => goToTestimonial(idx));
+                testimonialDotsEl.appendChild(dot);
+            });
+
+            function goToTestimonial(n) {
+                const count  = getVisibleCount();
+                const max    = Math.max(0, testimonials.length - count);
+                currentTestimonial = Math.min(Math.max(n, 0), max);
+                const slideW = testimonialsTrack.children[0] ? testimonialsTrack.children[0].offsetWidth : 0;
+                testimonialsTrack.style.transform = `translateX(-${currentTestimonial * slideW}px)`;
+                [...testimonialDotsEl.children].forEach((d, i) => {
+                    d.className = `w-3 h-3 rounded-full border-none cursor-pointer transition-all duration-300 ${i === currentTestimonial ? 'bg-primary' : 'bg-gray-300'}`;
+                });
+            }
+
+            if (prevBtn) prevBtn.addEventListener('click', () => goToTestimonial(currentTestimonial - 1));
+            if (nextBtn) nextBtn.addEventListener('click', () => goToTestimonial(currentTestimonial + 1));
+            window.addEventListener('resize', () => goToTestimonial(currentTestimonial));
+
+            setInterval(() => {
+                const count = getVisibleCount();
+                const max   = Math.max(0, testimonials.length - count);
+                goToTestimonial(currentTestimonial < max ? currentTestimonial + 1 : 0);
+            }, 4000);
+        }
         
+        // ===== HERO BACKGROUND CAROUSEL =====
+        const heroSlides = document.querySelectorAll('.hero-slide');
+        const heroDotsContainer = document.getElementById('hero-dots');
+        let currentHero = 0;
+
+        if (heroSlides.length && heroDotsContainer) {
+            heroSlides.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.className = 'hero-dot' + (i === 0 ? ' active' : '');
+                dot.addEventListener('click', () => setHeroSlide(i));
+                heroDotsContainer.appendChild(dot);
+            });
+
+            function setHeroSlide(n) {
+                heroSlides[currentHero].classList.remove('active');
+                heroDotsContainer.children[currentHero].classList.remove('active');
+                currentHero = n;
+                heroSlides[currentHero].classList.add('active');
+                heroDotsContainer.children[currentHero].classList.add('active');
+            }
+
+            setInterval(() => setHeroSlide((currentHero + 1) % heroSlides.length), 5000);
+        }
+
         // Form submission
         const contactForm = document.querySelector('form');
         contactForm.addEventListener('submit', function(e) {
@@ -229,3 +294,71 @@
                  alert("Something went wrong. Please try again.");
              });
         });
+
+        // ===== STAGGER DELAYS ON SERVICE CARDS =====
+        document.querySelectorAll('.service-card[data-animate]').forEach((el, i) => {
+            el.style.transitionDelay = `${i * 0.1}s`;
+        });
+
+        // ===== ADD ANIMATE ATTRS TO JS-GENERATED ITEMS =====
+        document.querySelectorAll('.menu-item').forEach((el, i) => {
+            el.setAttribute('data-animate', 'zoom-in');
+            el.style.transitionDelay = `${i * 0.07}s`;
+        });
+        document.querySelectorAll('.gallery-item').forEach((el, i) => {
+            el.setAttribute('data-animate', 'fade-up');
+            el.style.transitionDelay = `${i * 0.05}s`;
+        });
+
+        // ===== SCROLL REVEAL (IntersectionObserver) =====
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('[data-animate]').forEach(el => revealObserver.observe(el));
+
+        // ===== ANIMATED COUNTER =====
+        function animateCounter(el) {
+            const target   = parseInt(el.dataset.counter, 10);
+            const suffix   = el.dataset.suffix || '';
+            const duration = 1800;
+            let startTime  = null;
+            function step(ts) {
+                if (!startTime) startTime = ts;
+                const progress = Math.min((ts - startTime) / duration, 1);
+                el.textContent = Math.floor(progress * target) + suffix;
+                if (progress < 1) requestAnimationFrame(step);
+            }
+            requestAnimationFrame(step);
+        }
+
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.querySelectorAll('[data-counter]').forEach(animateCounter);
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const aboutSection = document.getElementById('about');
+        if (aboutSection) counterObserver.observe(aboutSection);
+
+        // ===== ACTIVE NAV LINK ON SCROLL =====
+        const allSections = document.querySelectorAll('section[id]');
+        const allNavLinks = document.querySelectorAll('.nav-link');
+        window.addEventListener('scroll', () => {
+            const pos = window.scrollY + 120;
+            allSections.forEach(section => {
+                if (pos >= section.offsetTop && pos < section.offsetTop + section.offsetHeight) {
+                    allNavLinks.forEach(link => {
+                        link.classList.toggle('active', link.getAttribute('href') === '#' + section.id);
+                    });
+                }
+            });
+        }, { passive: true });
