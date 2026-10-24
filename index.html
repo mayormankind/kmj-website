@@ -136,6 +136,7 @@
         }
         @media (min-width: 768px)  { .testimonial-slide { flex: 0 0 50%;      } }
         @media (min-width: 1024px) { .testimonial-slide { flex: 0 0 33.333%;  } }
+@media (min-width: 1024px) { #testimonial-dots { display: none; } }
 
         /* ===== GALLERY HOVER LIFT ===== */
         .gallery-item {
@@ -146,12 +147,19 @@
             box-shadow: 0 14px 32px rgba(0,0,0,0.22);
         }
 
-        /* ===== COUNTER POP-IN ===== */
-        @keyframes popIn {
-            from { opacity: 0; transform: scale(0.5); }
-            to   { opacity: 1; transform: scale(1);   }
-        }
-        .stat-animate { animation: popIn 0.6s ease both; }
+/* ===== WHATSAPP FLOATING ===== */
+@keyframes wa-glow {
+    0%,100% { box-shadow: 0 0 0 0 rgba(37,211,102,0.6); }
+    50% { box-shadow: 0 0 0 14px rgba(37,211,102,0); }
+}
+.wa-float { position: fixed; bottom: 24px; right: 24px; z-index: 9999; }
+.wa-btn { width:60px;height:60px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;font-size:28px;animation: wa-glow 2s infinite;cursor:pointer;border:none; }
+.wa-panel { position: fixed; bottom: 96px; right: 24px; width: 320px; max-width: 90vw; background: #fff; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,.2); display: none; flex-direction: column; overflow: hidden; z-index: 9999; }
+.wa-panel.open { display: flex; }
+.wa-panel header { background:#25D366;color:#fff;padding:12px 16px;font-weight:600; }
+.wa-panel .body { padding:12px; }
+.wa-panel textarea { width:100%;border:1px solid #ddd;border-radius:8px;padding:8px;resize:none; }
+.wa-panel button { margin-top:8px;background:#25D366;color:#fff;border:none;padding:8px 16px;border-radius:8px;cursor:pointer;width:100%; }
     </style>
 
     <!-- JSON-LD Structured Data -->
@@ -191,8 +199,7 @@
       "priceRange": "\u20a6\u20a6",
       "areaServed": { "@type": "Country", "name": "Nigeria" },
       "sameAs": [
-        "https://www.facebook.com/share/1C1XdCQ4RW/",
-        "https://www.instagram.com/mankind_dev",
+        "https://www.facebook.com/makinde.mojisola.3",        "https://www.instagram.com/mankind_dev",
         "https://x.com/RedMoonCoder"
       ],
       "hasOfferCatalog": {
@@ -415,8 +422,7 @@
                 <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Hear from satisfied clients who've experienced our services</p>
             </div>
             
-            <div class="relative px-12" id="testimonials-carousel">
-                <div class="testimonials-track" id="testimonials-track"></div>
+            <div class="relative px-4 md:px-12" id="testimonials-carousel">                <div class="testimonials-track" id="testimonials-track"></div>
                 <button id="prev-testimonial" class="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-white dark:bg-gray-700 rounded-full shadow-lg flex items-center justify-center hover:bg-primary hover:text-white transition-colors z-10">
                     <i class="fas fa-chevron-left"></i>
                 </button>
@@ -574,8 +580,7 @@
                         <div class="mt-8">
                             <h4 class="font-bold mb-4">Follow Us</h4>
                             <div class="flex space-x-4">
-                                <a href="https://www.facebook.com/share/1C1XdCQ4RW/" class="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
-                                    <i class="fab fa-facebook-f"></i>
+                                <a href="https://www.facebook.com/makinde.mojisola.3" class="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-colors">                                    <i class="fab fa-facebook-f"></i>
                                 </a>
                                 <a href="https://www.instagram.com/mankind_dev?igsh=dWxpbzlqbXZlNHBi" class="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
                                     <i class="fab fa-instagram"></i>
@@ -645,12 +650,36 @@
         </div>
     </footer>
 
+<!-- WhatsApp Floating -->
+<div class="wa-float">
+    <button class="wa-btn" id="wa-toggle" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></button>
+</div>
+<div class="wa-panel" id="wa-panel">
+    <header>KMJ Catering - WhatsApp</header>
+    <div class="body">
+        <p class="text-sm mb-2">Message us on WhatsApp:</p>
+        <select id="wa-number" class="w-full mb-2 border rounded p-2">
+            <option value="2348141530308">+234 814 153 0308</option>
+            <option value="2349050634373">+234 905 063 4373</option>
+        </select>
+        <textarea id="wa-msg" rows="4" placeholder="What would you like to do?"></textarea>
+        <button id="wa-send">Send</button>
+    </div>
+</div>
+
     <script src="/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-    <script>
-      (function() {
-      emailjs.init("4RRBCoDBC6au_uuOY");
-    })();
+<script>
+  (function(){
+    const toggle = document.getElementById('wa-toggle');
+    const panel = document.getElementById('wa-panel');
+    toggle.addEventListener('click', () => panel.classList.toggle('open'));
+    document.getElementById('wa-send').addEventListener('click', () => {
+      const num = document.getElementById('wa-number').value;
+      const msg = encodeURIComponent(document.getElementById('wa-msg').value || '');
+      window.open('https://wa.me/' + num + '?text=' + msg, '_blank');
+    });
+  })();
 </script>
 </body>
 </html>
