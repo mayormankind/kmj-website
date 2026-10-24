@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,8 +10,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <link rel="canonical" href="https://kmj-beige.vercel.app/">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://kmj-beige.vercel.app/og-image.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://kmj-beige.vercel.app/og-image.jpg">
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -33,26 +34,29 @@
     </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
-        body { overflow-x: hidden; }
-        
+
+        body {
+            overflow-x: hidden;
+        }
+
         .hero-bg {
             background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
         }
-        
+
         .menu-item:hover .menu-overlay {
             opacity: 1;
             transform: translateY(0);
         }
-        
+
         .testimonial-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
-        
+
         .btn-primary {
             transition: all 0.3s ease;
         }
-        
+
         .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 15px rgba(233, 30, 99, 0.4);
@@ -63,11 +67,27 @@
             opacity: 0;
             transition: opacity 0.7s ease, transform 0.7s ease;
         }
-        [data-animate="fade-up"]    { transform: translateY(40px); }
-        [data-animate="fade-left"]  { transform: translateX(-50px); }
-        [data-animate="fade-right"] { transform: translateX(50px); }
-        [data-animate="zoom-in"]    { transform: scale(0.8); }
-        [data-animate].animated { opacity: 1 !important; transform: none !important; }
+
+        [data-animate="fade-up"] {
+            transform: translateY(40px);
+        }
+
+        [data-animate="fade-left"] {
+            transform: translateX(-50px);
+        }
+
+        [data-animate="fade-right"] {
+            transform: translateX(50px);
+        }
+
+        [data-animate="zoom-in"] {
+            transform: scale(0.8);
+        }
+
+        [data-animate].animated {
+            opacity: 1 !important;
+            transform: none !important;
+        }
 
         /* ===== HERO CAROUSEL ===== */
         .hero-slide {
@@ -78,92 +98,237 @@
             opacity: 0;
             transition: opacity 1.5s ease;
         }
-        .hero-slide.active { opacity: 1; }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
 
         /* ===== HERO TEXT ENTRANCE ===== */
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to   { opacity: 1; transform: translateY(0);    }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        .hero-title    { animation: fadeInUp 1s ease 0.3s both; }
-        .hero-subtitle { animation: fadeInUp 1s ease 0.6s both; }
-        .hero-buttons  { animation: fadeInUp 1s ease 0.9s both; }
+
+        .hero-title {
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .hero-subtitle {
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .hero-buttons {
+            animation: fadeInUp 1s ease 0.9s both;
+        }
 
         /* ===== HERO DOTS ===== */
         .hero-dot {
-            width: 10px; height: 10px;
+            width: 10px;
+            height: 10px;
             border-radius: 9999px;
-            background: rgba(255,255,255,0.5);
+            background: rgba(255, 255, 255, 0.5);
             transition: all 0.3s ease;
             cursor: pointer;
             border: none;
         }
-        .hero-dot.active { background: #fff; width: 28px; }
+
+        .hero-dot.active {
+            background: #fff;
+            width: 28px;
+        }
 
         /* ===== FLOATING SERVICE ICON ===== */
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50%       { transform: translateY(-8px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
         }
-        .service-icon { animation: float 3s ease-in-out infinite; }
+
+        .service-icon {
+            animation: float 3s ease-in-out infinite;
+        }
 
         /* ===== NAV LINK UNDERLINE ===== */
-        .nav-link { position: relative; }
+        .nav-link {
+            position: relative;
+        }
+
         .nav-link::after {
             content: '';
             position: absolute;
-            bottom: -2px; left: 50%;
-            width: 0; height: 2px;
+            bottom: -2px;
+            left: 50%;
+            width: 0;
+            height: 2px;
             background: #E91E63;
             transition: width 0.3s ease, left 0.3s ease;
         }
-        .nav-link:hover::after, .nav-link.active::after { width: 100%; left: 0; }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+            left: 0;
+        }
 
         /* ===== PULSE BUTTON ===== */
         @keyframes pulse-ring {
-            0%   { box-shadow: 0 0 0 0   rgba(233,30,99,0.45); }
-            70%  { box-shadow: 0 0 0 12px rgba(233,30,99,0);   }
-            100% { box-shadow: 0 0 0 0   rgba(233,30,99,0);   }
+            0% {
+                box-shadow: 0 0 0 0 rgba(233, 30, 99, 0.45);
+            }
+
+            70% {
+                box-shadow: 0 0 0 12px rgba(233, 30, 99, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(233, 30, 99, 0);
+            }
         }
-        .btn-pulse { animation: pulse-ring 2.2s infinite; }
+
+        .btn-pulse {
+            animation: pulse-ring 2.2s infinite;
+        }
 
         /* ===== TESTIMONIALS CAROUSEL ===== */
-        #testimonials-carousel { overflow: hidden; }
+        #testimonials-carousel {
+            overflow: hidden;
+        }
+
         .testimonials-track {
             display: flex;
-            transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
+
         .testimonial-slide {
             flex: 0 0 100%;
             padding: 0 8px;
             box-sizing: border-box;
         }
-        @media (min-width: 768px)  { .testimonial-slide { flex: 0 0 50%;      } }
-        @media (min-width: 1024px) { .testimonial-slide { flex: 0 0 33.333%;  } }
-@media (min-width: 1024px) { #testimonial-dots { display: none; } }
+
+        @media (min-width: 768px) {
+            .testimonial-slide {
+                flex: 0 0 50%;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .testimonial-slide {
+                flex: 0 0 33.333%;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            #testimonial-dots {
+                display: none;
+            }
+        }
 
         /* ===== GALLERY HOVER LIFT ===== */
         .gallery-item {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+
         .gallery-item:hover {
             transform: scale(1.04);
-            box-shadow: 0 14px 32px rgba(0,0,0,0.22);
+            box-shadow: 0 14px 32px rgba(0, 0, 0, 0.22);
         }
 
-/* ===== WHATSAPP FLOATING ===== */
-@keyframes wa-glow {
-    0%,100% { box-shadow: 0 0 0 0 rgba(37,211,102,0.6); }
-    50% { box-shadow: 0 0 0 14px rgba(37,211,102,0); }
-}
-.wa-float { position: fixed; bottom: 24px; right: 24px; z-index: 9999; }
-.wa-btn { width:60px;height:60px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;font-size:28px;animation: wa-glow 2s infinite;cursor:pointer;border:none; }
-.wa-panel { position: fixed; bottom: 96px; right: 24px; width: 320px; max-width: 90vw; background: #fff; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,.2); display: none; flex-direction: column; overflow: hidden; z-index: 9999; }
-.wa-panel.open { display: flex; }
-.wa-panel header { background:#25D366;color:#fff;padding:12px 16px;font-weight:600; }
-.wa-panel .body { padding:12px; }
-.wa-panel textarea { width:100%;border:1px solid #ddd;border-radius:8px;padding:8px;resize:none; }
-.wa-panel button { margin-top:8px;background:#25D366;color:#fff;border:none;padding:8px 16px;border-radius:8px;cursor:pointer;width:100%; }
+        /* ===== WHATSAPP FLOATING ===== */
+        @keyframes wa-glow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+            }
+
+            50% {
+                box-shadow: 0 0 0 14px rgba(37, 211, 102, 0);
+            }
+        }
+
+        .wa-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 9999;
+        }
+
+        .wa-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #25D366;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            animation: wa-glow 2s infinite;
+            cursor: pointer;
+            border: none;
+        }
+
+        .wa-panel {
+            position: fixed;
+            bottom: 96px;
+            right: 24px;
+            width: 320px;
+            max-width: 90vw;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 9999;
+        }
+
+        .wa-panel.open {
+            display: flex;
+        }
+
+        .wa-panel header {
+            background: #25D366;
+            color: #fff;
+            padding: 12px 16px;
+            font-weight: 600;
+        }
+
+        .wa-panel .body {
+            padding: 12px;
+        }
+
+        .wa-panel textarea {
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 8px;
+            resize: none;
+        }
+
+        .wa-panel button {
+            margin-top: 8px;
+            background: #25D366;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+        }
     </style>
 
     <!-- JSON-LD Structured Data -->
@@ -203,7 +368,8 @@
       "priceRange": "\u20a6\u20a6",
       "areaServed": { "@type": "Country", "name": "Nigeria" },
       "sameAs": [
-        "https://www.facebook.com/makinde.mojisola.3",        "https://www.instagram.com/mankind_dev",
+        "https://www.facebook.com/makinde.mojisola.3",
+        "https://www.instagram.com/kmj_catering_institute/",
         "https://x.com/RedMoonCoder"
       ],
       "hasOfferCatalog": {
@@ -215,13 +381,15 @@
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Event Planning" } },
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom Cakes & Desserts" } },
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Event Decor" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Vendor Coordination" } }
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Vendor Coordination" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Culinary Training" } }
         ]
       }
     }
     </script>
 
 </head>
+
 <body class="font-sans bg-light text-dark dark:bg-dark dark:text-light transition-colors duration-300">
     <!-- Navigation -->
     <header class="fixed w-full z-50 bg-white/90 dark:bg-dark/90 backdrop-blur-sm shadow-sm">
@@ -241,18 +409,23 @@
                     </div>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700" aria-label="Toggle dark mode" title="Toggle dark mode">
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700"
+                        aria-label="Toggle dark mode" title="Toggle dark mode">
                         <i class="fas fa-moon dark:hidden"></i>
                         <i class="fas fa-sun hidden dark:inline"></i>
                     </button>
-                    <a href="#contact" class="btn-primary bg-primary text-white px-6 py-2 rounded-full font-medium hover:bg-opacity-90">Book Now</a>
-                    <button aria-label="Toggle mobile menu" class="md:hidden p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700" id="mobile-menu-button">
+                    <a href="#contact"
+                        class="btn-primary bg-primary text-white px-6 py-2 rounded-full font-medium hover:bg-opacity-90">Book
+                        Now</a>
+                    <button aria-label="Toggle mobile menu"
+                        class="md:hidden p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700"
+                        id="mobile-menu-button">
                         <i class="fas fa-bars"></i>
                     </button>
                 </div>
             </div>
         </nav>
-        
+
         <!-- Mobile menu -->
         <div class="md:hidden hidden" id="mobile-menu">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white dark:bg-gray-800 shadow-lg">
@@ -270,18 +443,32 @@
     <section id="home" class="relative h-screen flex items-center pt-20 overflow-hidden">
         <!-- Background Carousel -->
         <div id="hero-carousel" class="absolute inset-0 z-0">
-            <div class="hero-slide active" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');"></div>
-            <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');"></div>
-            <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1550617931-e17a7b70dce2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');"></div>
-            <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1547592180-85f173990554?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');"></div>
+            <div class="hero-slide active"
+                style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');">
+            </div>
+            <div class="hero-slide"
+                style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');">
+            </div>
+            <div class="hero-slide"
+                style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1550617931-e17a7b70dce2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');">
+            </div>
+            <div class="hero-slide"
+                style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1547592180-85f173990554?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');">
+            </div>
         </div>
         <!-- Content -->
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-            <h1 class="hero-title text-4xl md:text-6xl font-serif font-bold mb-6">Exquisite Catering & Event Planning</h1>
-            <p class="hero-subtitle text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Creating unforgettable experiences with delicious food and flawless execution for your special occasions in Nigeria.</p>
+            <h1 class="hero-title text-4xl md:text-6xl font-serif font-bold mb-6">Exquisite Catering & Event Planning
+            </h1>
+            <p class="hero-subtitle text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Creating unforgettable experiences with
+                delicious food and flawless execution for your special occasions in Nigeria.</p>
             <div class="hero-buttons flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#contact" class="btn-primary btn-pulse bg-primary text-white px-8 py-3 rounded-full font-medium text-lg hover:bg-opacity-90">Book Your Event</a>
-                <a href="#menu" class="btn-primary bg-white text-primary px-8 py-3 rounded-full font-medium text-lg hover:bg-opacity-90">View Our Menu</a>
+                <a href="#contact"
+                    class="btn-primary btn-pulse bg-primary text-white px-8 py-3 rounded-full font-medium text-lg hover:bg-opacity-90">Book
+                    Your Event</a>
+                <a href="#menu"
+                    class="btn-primary bg-white text-primary px-8 py-3 rounded-full font-medium text-lg hover:bg-opacity-90">View
+                    Our Menu</a>
             </div>
         </div>
         <!-- Slide Indicators -->
@@ -292,57 +479,88 @@
     <section id="services" class="py-20 bg-white dark:bg-gray-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4" data-animate="fade-up">Our Premium Services</h2>
-                <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">From intimate gatherings to grand celebrations, we handle every detail with care.</p>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4" data-animate="fade-up">Our Premium Services
+                </h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">From intimate gatherings to grand
+                    celebrations, we handle every detail with care.</p>
             </div>
-            
+
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="service-card bg-light dark:bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300" data-animate="fade-up">
-                    <div class="service-icon w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+                <div class="service-card bg-light dark:bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+                    data-animate="fade-up">
+                    <div
+                        class="service-icon w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
                         <i class="fas fa-utensils text-primary text-2xl"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3">Small Chops & Snacks</h3>
-                    <p class="text-gray-600 dark:text-gray-300">Delicious bite-sized Nigerian favorites perfect for any occasion - from puff puff to spring rolls and more.</p>
+                    <p class="text-gray-600 dark:text-gray-300">Delicious bite-sized Nigerian favorites perfect for any
+                        occasion - from puff puff to spring rolls and more.</p>
                 </div>
-                
-                <div class="service-card bg-light dark:bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300" data-animate="fade-up">
-                    <div class="service-icon w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+
+                <div class="service-card bg-light dark:bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+                    data-animate="fade-up">
+                    <div
+                        class="service-icon w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
                         <i class="fas fa-glass-cheers text-primary text-2xl"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3">Full Event Catering</h3>
-                    <p class="text-gray-600 dark:text-gray-300">Complete catering solutions for weddings, birthdays, corporate events with customized menus.</p>
+                    <p class="text-gray-600 dark:text-gray-300">Complete catering solutions for weddings, birthdays,
+                        corporate events with customized menus.</p>
                 </div>
-                
-                <div class="service-card bg-light dark:bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300" data-animate="fade-up">
-                    <div class="service-icon w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+
+                <div class="service-card bg-light dark:bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+                    data-animate="fade-up">
+                    <div
+                        class="service-icon w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
                         <i class="fas fa-calendar-check text-primary text-2xl"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3">Event Planning</h3>
-                    <p class="text-gray-600 dark:text-gray-300">End-to-end event coordination including venue selection, decor, vendor management, and execution.</p>
+                    <p class="text-gray-600 dark:text-gray-300">End-to-end event coordination including venue selection,
+                        decor, vendor management, and execution.</p>
                 </div>
-                
-                <div class="service-card bg-light dark:bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300" data-animate="fade-up">
-                    <div class="service-icon w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+
+                <div class="service-card bg-light dark:bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+                    data-animate="fade-up">
+                    <div
+                        class="service-icon w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
                         <i class="fas fa-birthday-cake text-primary text-2xl"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3">Custom Cakes & Desserts</h3>
-                    <p class="text-gray-600 dark:text-gray-300">Beautiful and delicious custom cakes, cupcakes, and dessert tables for your special day.</p>
+                    <p class="text-gray-600 dark:text-gray-300">Beautiful and delicious custom cakes, cupcakes, and
+                        dessert tables for your special day.</p>
                 </div>
-                
-                <div class="service-card bg-light dark:bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300" data-animate="fade-up">
-                    <div class="service-icon w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+
+                <div class="service-card bg-light dark:bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+                    data-animate="fade-up">
+                    <div
+                        class="service-icon w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
                         <i class="fas fa-palette text-primary text-2xl"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3">Event Decor</h3>
-                    <p class="text-gray-600 dark:text-gray-300">Stunning decor concepts that transform your venue and create the perfect ambiance.</p>
+                    <p class="text-gray-600 dark:text-gray-300">Stunning decor concepts that transform your venue and
+                        create the perfect ambiance.</p>
                 </div>
-                
-                <div class="service-card bg-light dark:bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300" data-animate="fade-up">
-                    <div class="service-icon w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+
+                <div class="service-card bg-light dark:bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+                    data-animate="fade-up">
+                    <div
+                        class="service-icon w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
                         <i class="fas fa-users text-primary text-2xl"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3">Vendor Coordination</h3>
-                    <p class="text-gray-600 dark:text-gray-300">We connect you with trusted vendors for photography, music, and other event needs.</p>
+                    <p class="text-gray-600 dark:text-gray-300">We connect you with trusted vendors for photography,
+                        music, and other event needs.</p>
+                </div>
+
+                <div class="service-card bg-light dark:bg-gray-800 p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+                    data-animate="fade-up">
+                    <div
+                        class="service-icon w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-chalkboard-teacher text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Culinary Training</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Hands-on catering and culinary training programmes for
+                        aspiring chefs and food entrepreneurs looking to build professional skills.</p>
                 </div>
             </div>
         </div>
@@ -352,52 +570,56 @@
     <section id="menu" class="py-20 bg-gray-50 dark:bg-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4" data-animate="fade-up">Our Signature Menu</h2>
-                <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Delicious offerings that will make your event memorable</p>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4" data-animate="fade-up">Our Signature Menu
+                </h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Delicious offerings that will make
+                    your event memorable</p>
             </div>
-            
+
             <!-- Static menu for no-JS crawlers and agents -->
             <noscript>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white rounded-xl p-6 shadow-md">
-                    <h3 class="text-xl font-bold mb-2">Small Chops Platter</h3>
-                    <p class="text-gray-600 mb-2">Assortment of puff puff, spring rolls, samosas, and meat pies</p>
-                    <p class="text-pink-600 font-medium">&#8358;15,000 per tray</p>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-xl p-6 shadow-md">
+                        <h3 class="text-xl font-bold mb-2">Small Chops Platter</h3>
+                        <p class="text-gray-600 mb-2">Assortment of puff puff, spring rolls, samosas, and meat pies</p>
+                        <p class="text-pink-600 font-medium">&#8358;15,000 per tray</p>
+                    </div>
+                    <div class="bg-white rounded-xl p-6 shadow-md">
+                        <h3 class="text-xl font-bold mb-2">Jollof Rice &amp; Chicken</h3>
+                        <p class="text-gray-600 mb-2">Flavorful Nigerian jollof rice with fried, grilled or roasted
+                            chicken</p>
+                        <p class="text-pink-600 font-medium">&#8358;8,000 per plate</p>
+                    </div>
+                    <div class="bg-white rounded-xl p-6 shadow-md">
+                        <h3 class="text-xl font-bold mb-2">Pepper Soup Assortment</h3>
+                        <p class="text-gray-600 mb-2">Spicy Nigerian pepper soup with assorted meats or fish</p>
+                        <p class="text-pink-600 font-medium">&#8358;12,000 per serving</p>
+                    </div>
+                    <div class="bg-white rounded-xl p-6 shadow-md">
+                        <h3 class="text-xl font-bold mb-2">Suya Platter</h3>
+                        <p class="text-gray-600 mb-2">Grilled spicy skewered meat with onions and pepper</p>
+                        <p class="text-pink-600 font-medium">&#8358;10,000 per platter</p>
+                    </div>
+                    <div class="bg-white rounded-xl p-6 shadow-md">
+                        <h3 class="text-xl font-bold mb-2">Mini Dessert Table</h3>
+                        <p class="text-gray-600 mb-2">Assortment of mini cakes, cupcakes, and pastries</p>
+                        <p class="text-pink-600 font-medium">&#8358;25,000 for 50 pieces</p>
+                    </div>
+                    <div class="bg-white rounded-xl p-6 shadow-md">
+                        <h3 class="text-xl font-bold mb-2">Signature Cocktails</h3>
+                        <p class="text-gray-600 mb-2">Custom cocktails and mocktails for your event</p>
+                        <p class="text-pink-600 font-medium">&#8358;5,000 per glass</p>
+                    </div>
                 </div>
-                <div class="bg-white rounded-xl p-6 shadow-md">
-                    <h3 class="text-xl font-bold mb-2">Jollof Rice &amp; Chicken</h3>
-                    <p class="text-gray-600 mb-2">Flavorful Nigerian jollof rice with fried, grilled or roasted chicken</p>
-                    <p class="text-pink-600 font-medium">&#8358;8,000 per plate</p>
-                </div>
-                <div class="bg-white rounded-xl p-6 shadow-md">
-                    <h3 class="text-xl font-bold mb-2">Pepper Soup Assortment</h3>
-                    <p class="text-gray-600 mb-2">Spicy Nigerian pepper soup with assorted meats or fish</p>
-                    <p class="text-pink-600 font-medium">&#8358;12,000 per serving</p>
-                </div>
-                <div class="bg-white rounded-xl p-6 shadow-md">
-                    <h3 class="text-xl font-bold mb-2">Suya Platter</h3>
-                    <p class="text-gray-600 mb-2">Grilled spicy skewered meat with onions and pepper</p>
-                    <p class="text-pink-600 font-medium">&#8358;10,000 per platter</p>
-                </div>
-                <div class="bg-white rounded-xl p-6 shadow-md">
-                    <h3 class="text-xl font-bold mb-2">Mini Dessert Table</h3>
-                    <p class="text-gray-600 mb-2">Assortment of mini cakes, cupcakes, and pastries</p>
-                    <p class="text-pink-600 font-medium">&#8358;25,000 for 50 pieces</p>
-                </div>
-                <div class="bg-white rounded-xl p-6 shadow-md">
-                    <h3 class="text-xl font-bold mb-2">Signature Cocktails</h3>
-                    <p class="text-gray-600 mb-2">Custom cocktails and mocktails for your event</p>
-                    <p class="text-pink-600 font-medium">&#8358;5,000 per glass</p>
-                </div>
-            </div>
             </noscript>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Menu items generated by JavaScript -->
             </div>
-            
+
             <div class="text-center mt-12">
-                <a href="#contact" class="btn-primary bg-primary text-white px-8 py-3 rounded-full font-medium text-lg hover:bg-opacity-90 inline-flex items-center">
+                <a href="#contact"
+                    class="btn-primary bg-primary text-white px-8 py-3 rounded-full font-medium text-lg hover:bg-opacity-90 inline-flex items-center">
                     Request Full Menu <i class="fas fa-arrow-right ml-2"></i>
                 </a>
             </div>
@@ -409,9 +631,10 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4" data-animate="fade-up">Our Work Gallery</h2>
-                <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">A glimpse of our delicious creations and beautiful events</p>
+                <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">A glimpse of our delicious
+                    creations and beautiful events</p>
             </div>
-            
+
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[180px]">
                 <!-- Gallery items is generated by JavaScript -->
             </div>
@@ -422,15 +645,20 @@
     <section id="testimonials" class="py-20 bg-primary bg-opacity-5 dark:bg-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4" data-animate="fade-up">What Our Clients Say</h2>
-                <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Hear from satisfied clients who've experienced our services</p>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4" data-animate="fade-up">What Our Clients Say
+                </h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Hear from satisfied clients who've
+                    experienced our services</p>
             </div>
-            
-            <div class="relative px-4 md:px-12" id="testimonials-carousel">                <div class="testimonials-track" id="testimonials-track"></div>
-                <button id="prev-testimonial" class="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-white dark:bg-gray-700 rounded-full shadow-lg flex items-center justify-center hover:bg-primary hover:text-white transition-colors z-10">
+
+            <div class="relative px-4 md:px-12" id="testimonials-carousel">
+                <div class="testimonials-track" id="testimonials-track"></div>
+                <button id="prev-testimonial"
+                    class="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-white dark:bg-gray-700 rounded-full shadow-lg flex items-center justify-center hover:bg-primary hover:text-white transition-colors z-10">
                     <i class="fas fa-chevron-left"></i>
                 </button>
-                <button id="next-testimonial" class="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-white dark:bg-gray-700 rounded-full shadow-lg flex items-center justify-center hover:bg-primary hover:text-white transition-colors z-10">
+                <button id="next-testimonial"
+                    class="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-white dark:bg-gray-700 rounded-full shadow-lg flex items-center justify-center hover:bg-primary hover:text-white transition-colors z-10">
                     <i class="fas fa-chevron-right"></i>
                 </button>
                 <div id="testimonial-dots" class="flex justify-center mt-8 gap-2"></div>
@@ -443,22 +671,26 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col lg:flex-row items-center gap-12">
                 <div class="lg:w-1/2" data-animate="fade-right">
-                    <img 
-                        src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-                         alt="KMJ Catering Team"
-                         class="rounded-xl shadow-xl w-full h-auto object-cover">
+                    <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                        alt="KMJ Catering Team" class="rounded-xl shadow-xl w-full h-auto object-cover">
                 </div>
                 <div class="lg:w-1/2" data-animate="fade-left">
-                    <h2 class="text-3xl md:text-4xl font-serif font-bold mb-6" data-animate="fade-up">About KMJ Catering & Events</h2>
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold mb-6" data-animate="fade-up">About KMJ Catering
+                        & Events</h2>
                     <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
-                        Founded by Mojisola, KMJ Catering & Events is a premier catering and event planning service based in Nigeria. With over 10 years of experience in the industry, we've perfected the art of creating memorable events through delicious food and impeccable service.
+                        Founded by Mojisola, KMJ Catering & Events is a premier catering and event planning service
+                        based in Nigeria. With over 10 years of experience in the industry, we've perfected the art of
+                        creating memorable events through delicious food and impeccable service.
                     </p>
                     <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
-                        Our passion for culinary excellence and attention to detail sets us apart. We believe every event is unique and deserves a personalized touch, whether it's an intimate gathering or a grand celebration.
+                        Our passion for culinary excellence and attention to detail sets us apart. We believe every
+                        event is unique and deserves a personalized touch, whether it's an intimate gathering or a grand
+                        celebration.
                     </p>
                     <div class="flex flex-wrap gap-4 mt-8">
                         <div class="flex items-center">
-                            <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mr-4">
+                            <div
+                                class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mr-4">
                                 <i class="fas fa-award text-primary text-xl"></i>
                             </div>
                             <div>
@@ -467,7 +699,8 @@
                             </div>
                         </div>
                         <div class="flex items-center">
-                            <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mr-4">
+                            <div
+                                class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mr-4">
                                 <i class="fas fa-smile text-primary text-xl"></i>
                             </div>
                             <div>
@@ -486,29 +719,42 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4" data-animate="fade-up">Get In Touch</h2>
-                <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Ready to plan your next event? Contact us for a consultation</p>
+                <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Ready to plan your next event?
+                    Contact us for a consultation</p>
             </div>
-            
+
             <div class="flex flex-col lg:flex-row gap-12">
                 <div class="lg:w-1/2">
                     <form class="space-y-6">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Full Name</label>
-                                <input type="text" id="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-primary focus:border-primary dark:bg-gray-800">
+                                <label for="name"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Full
+                                    Name</label>
+                                <input type="text" id="name"
+                                    class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-primary focus:border-primary dark:bg-gray-800">
                             </div>
                             <div>
-                                <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email Address</label>
-                                <input type="email" id="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-primary focus:border-primary dark:bg-gray-800">
+                                <label for="email"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email
+                                    Address</label>
+                                <input type="email" id="email"
+                                    class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-primary focus:border-primary dark:bg-gray-800">
                             </div>
                         </div>
                         <div>
-                            <label for="phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Phone Number</label>
-                            <input type="tel" id="phone" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-primary focus:border-primary dark:bg-gray-800">
+                            <label for="phone"
+                                class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Phone
+                                Number</label>
+                            <input type="tel" id="phone"
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-primary focus:border-primary dark:bg-gray-800">
                         </div>
                         <div>
-                            <label for="event-type" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Event Type</label>
-                            <select id="event-type" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-primary focus:border-primary dark:bg-gray-800">
+                            <label for="event-type"
+                                class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Event
+                                Type</label>
+                            <select id="event-type"
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-primary focus:border-primary dark:bg-gray-800">
                                 <option value="">Select Event Type</option>
                                 <option value="wedding">Wedding</option>
                                 <option value="birthday">Birthday</option>
@@ -518,11 +764,15 @@
                             </select>
                         </div>
                         <div>
-                            <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Your Message</label>
-                            <textarea id="message" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-primary focus:border-primary dark:bg-gray-800"></textarea>
+                            <label for="message"
+                                class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Your
+                                Message</label>
+                            <textarea id="message" rows="4"
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-primary focus:border-primary dark:bg-gray-800"></textarea>
                         </div>
                         <div>
-                            <button type="submit" class="btn-primary bg-primary text-white px-8 py-3 rounded-full font-medium text-lg w-full hover:bg-opacity-90">
+                            <button type="submit"
+                                class="btn-primary bg-primary text-white px-8 py-3 rounded-full font-medium text-lg w-full hover:bg-opacity-90">
                                 Send Message <i class="fas fa-paper-plane ml-2"></i>
                             </button>
                         </div>
@@ -534,7 +784,8 @@
                         <div class="space-y-6">
                             <div class="flex items-start">
                                 <div class="flex-shrink-0">
-                                    <div class="w-10 h-10 bg-primary bg-opacity-10 rounded-full flex items-center justify-center">
+                                    <div
+                                        class="w-10 h-10 bg-primary bg-opacity-10 rounded-full flex items-center justify-center">
                                         <i class="fas fa-map-marker-alt text-primary"></i>
                                     </div>
                                 </div>
@@ -545,7 +796,8 @@
                             </div>
                             <div class="flex items-start">
                                 <div class="flex-shrink-0">
-                                    <div class="w-10 h-10 bg-primary bg-opacity-10 rounded-full flex items-center justify-center">
+                                    <div
+                                        class="w-10 h-10 bg-primary bg-opacity-10 rounded-full flex items-center justify-center">
                                         <i class="fas fa-phone-alt text-primary"></i>
                                     </div>
                                 </div>
@@ -557,7 +809,8 @@
                             </div>
                             <div class="flex items-start">
                                 <div class="flex-shrink-0">
-                                    <div class="w-10 h-10 bg-primary bg-opacity-10 rounded-full flex items-center justify-center">
+                                    <div
+                                        class="w-10 h-10 bg-primary bg-opacity-10 rounded-full flex items-center justify-center">
                                         <i class="fas fa-envelope text-primary"></i>
                                     </div>
                                 </div>
@@ -569,7 +822,8 @@
                             </div>
                             <div class="flex items-start">
                                 <div class="flex-shrink-0">
-                                    <div class="w-10 h-10 bg-primary bg-opacity-10 rounded-full flex items-center justify-center">
+                                    <div
+                                        class="w-10 h-10 bg-primary bg-opacity-10 rounded-full flex items-center justify-center">
                                         <i class="fas fa-clock text-primary"></i>
                                     </div>
                                 </div>
@@ -580,19 +834,24 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="mt-8">
                             <h4 class="font-bold mb-4">Follow Us</h4>
                             <div class="flex space-x-4">
-                                <a href="https://www.facebook.com/makinde.mojisola.3" class="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-colors">                                    <i class="fab fa-facebook-f"></i>
+                                <a href="https://www.facebook.com/makinde.mojisola.3"
+                                    class="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+                                    <i class="fab fa-facebook-f"></i>
                                 </a>
-                                <a href="https://www.instagram.com/mankind_dev?igsh=dWxpbzlqbXZlNHBi" class="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+                                <a href="https://www.instagram.com/kmj_catering_institute/"
+                                    class="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
                                     <i class="fab fa-instagram"></i>
                                 </a>
-                                <a href="https://x.com/RedMoonCoder" class="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+                                <a href="https://x.com/RedMoonCoder"
+                                    class="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
                                     <i class="fab fa-twitter"></i>
                                 </a>
-                                <a href="https://wa.me/message/5NXGZ6LO6VYRJ1" class="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+                                <a href="https://wa.me/message/5NXGZ6LO6VYRJ1"
+                                    class="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
                                     <i class="fab fa-whatsapp"></i>
                                 </a>
                             </div>
@@ -609,28 +868,41 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div>
                     <h3 class="text-xl font-serif font-bold mb-4">KMJ Catering & Events</h3>
-                    <p class="text-gray-300">Creating unforgettable culinary experiences and beautifully planned events across Nigeria.</p>
+                    <p class="text-gray-300">Creating unforgettable culinary experiences and beautifully planned events
+                        across Nigeria.</p>
                 </div>
                 <div>
                     <h4 class="text-lg font-bold mb-4">Quick Links</h4>
                     <ul class="space-y-2">
                         <li><a href="#home" class="text-gray-300 hover:text-primary transition-colors">Home</a></li>
-                        <li><a href="#services" class="text-gray-300 hover:text-primary transition-colors">Services</a></li>
+                        <li><a href="#services" class="text-gray-300 hover:text-primary transition-colors">Services</a>
+                        </li>
                         <li><a href="#menu" class="text-gray-300 hover:text-primary transition-colors">Our Menu</a></li>
-                        <li><a href="#gallery" class="text-gray-300 hover:text-primary transition-colors">Gallery</a></li>
-                        <li><a href="#about" class="text-gray-300 hover:text-primary transition-colors">About Us</a></li>
-                        <li><a href="#contact" class="text-gray-300 hover:text-primary transition-colors">Contact</a></li>
+                        <li><a href="#gallery" class="text-gray-300 hover:text-primary transition-colors">Gallery</a>
+                        </li>
+                        <li><a href="#about" class="text-gray-300 hover:text-primary transition-colors">About Us</a>
+                        </li>
+                        <li><a href="#contact" class="text-gray-300 hover:text-primary transition-colors">Contact</a>
+                        </li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="text-lg font-bold mb-4">Services</h4>
                     <ul class="space-y-2">
-                        <li><a href="#menu" class="text-gray-300 hover:text-primary transition-colors">Small Chops</a></li>
-                        <li><a href="#menu" class="text-gray-300 hover:text-primary transition-colors">Event Catering</a></li>
-                        <li><a href="#menu" class="text-gray-300 hover:text-primary transition-colors">Event Planning</a></li>
-                        <li><a href="#menu" class="text-gray-300 hover:text-primary transition-colors">Custom Cakes</a></li>
-                        <li><a href="#menu" class="text-gray-300 hover:text-primary transition-colors">Event Decor</a></li>
-                        <li><a href="#menu" class="text-gray-300 hover:text-primary transition-colors">Vendor Coordination</a></li>
+                        <li><a href="#menu" class="text-gray-300 hover:text-primary transition-colors">Small Chops</a>
+                        </li>
+                        <li><a href="#menu" class="text-gray-300 hover:text-primary transition-colors">Event
+                                Catering</a></li>
+                        <li><a href="#menu" class="text-gray-300 hover:text-primary transition-colors">Event
+                                Planning</a></li>
+                        <li><a href="#menu" class="text-gray-300 hover:text-primary transition-colors">Custom Cakes</a>
+                        </li>
+                        <li><a href="#menu" class="text-gray-300 hover:text-primary transition-colors">Event Decor</a>
+                        </li>
+                        <li><a href="#menu" class="text-gray-300 hover:text-primary transition-colors">Vendor
+                                Coordination</a></li>
+                        <li><a href="#services" class="text-gray-300 hover:text-primary transition-colors">Culinary
+                                Training</a></li>
                     </ul>
                 </div>
                 <div>
@@ -654,36 +926,37 @@
         </div>
     </footer>
 
-<!-- WhatsApp Floating -->
-<div class="wa-float">
-    <button class="wa-btn" id="wa-toggle" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></button>
-</div>
-<div class="wa-panel" id="wa-panel">
-    <header>KMJ Catering - WhatsApp</header>
-    <div class="body">
-        <p class="text-sm mb-2">Message us on WhatsApp:</p>
-        <select id="wa-number" class="w-full mb-2 border rounded p-2">
-            <option value="2348141530308">+234 814 153 0308</option>
-            <option value="2349050634373">+234 905 063 4373</option>
-        </select>
-        <textarea id="wa-msg" rows="4" placeholder="What would you like to do?"></textarea>
-        <button id="wa-send">Send</button>
+    <!-- WhatsApp Floating -->
+    <div class="wa-float">
+        <button class="wa-btn" id="wa-toggle" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></button>
     </div>
-</div>
+    <div class="wa-panel" id="wa-panel">
+        <header>KMJ Catering - WhatsApp</header>
+        <div class="body">
+            <p class="text-sm mb-2">Message us on WhatsApp:</p>
+            <select id="wa-number" class="w-full mb-2 border rounded p-2">
+                <option value="2348141530308">+234 814 153 0308</option>
+                <option value="2349050634373">+234 905 063 4373</option>
+            </select>
+            <textarea id="wa-msg" rows="4" placeholder="What would you like to do?"></textarea>
+            <button id="wa-send">Send</button>
+        </div>
+    </div>
 
     <script src="/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-<script>
-  (function(){
-    const toggle = document.getElementById('wa-toggle');
-    const panel = document.getElementById('wa-panel');
-    toggle.addEventListener('click', () => panel.classList.toggle('open'));
-    document.getElementById('wa-send').addEventListener('click', () => {
-      const num = document.getElementById('wa-number').value;
-      const msg = encodeURIComponent(document.getElementById('wa-msg').value || '');
-      window.open('https://wa.me/' + num + '?text=' + msg, '_blank');
-    });
-  })();
-</script>
+    <script>
+            (function () {
+                const toggle = document.getElementById('wa-toggle');
+                const panel = document.getElementById('wa-panel');
+                toggle.addEventListener('click', () => panel.classList.toggle('open'));
+                document.getElementById('wa-send').addEventListener('click', () => {
+                    const num = document.getElementById('wa-number').value;
+                    const msg = encodeURIComponent(document.getElementById('wa-msg').value || '');
+                    window.open('https://wa.me/' + num + '?text=' + msg, '_blank');
+                });
+            })();
+    </script>
 </body>
+
 </html>
