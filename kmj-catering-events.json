@@ -1,0 +1,79 @@
+{
+  "title": "KMJ Catering & Events",
+  "slug": "kmj-catering-events",
+  "subtitle": "Client Website Build",
+  "category": "Frontend",
+  "period": "Q2 2025",
+  "tags": ["Frontend", "Vanilla JS", "Business Website"],
+  "shortDescription": "A fully animated single-page marketing website for a Nigerian catering and event planning brand, built with Tailwind CSS and vanilla JavaScript.",
+  "longDescription": "KMJ Catering & Events is a responsive, single-page marketing website built for a premium Nigerian catering and event planning business. The site showcases the client's services, signature menu, photo gallery, and customer testimonials through a polished UI featuring a hero image carousel, scroll-reveal animations, and an EmailJS-powered contact form — all with zero JavaScript framework dependencies.",
+  "heroImage": "",
+  "demoVideoUrl": "",
+  "images": [],
+  "details": {
+    "challenge": {
+      "subtitle": "01 — The Challenge",
+      "title": "No Online Presence to Drive Bookings",
+      "description": "KMJ Catering & Events had an established local reputation but no professional web presence to showcase their services, attract new clients, or capture event bookings online. The site needed to feel premium and trustworthy while remaining fast and accessible on the mobile devices most commonly used in Nigeria."
+    },
+    "strategy": {
+      "subtitle": "02 — The Strategy",
+      "title": "Tailwind-Powered SPA with Zero Framework Overhead",
+      "description": "Built as a single HTML file with a companion script, the site leverages Tailwind CSS via CDN for rapid, utility-first styling and vanilla JavaScript for all interactivity. A hero background carousel, IntersectionObserver-based scroll-reveal system, a responsive testimonials carousel, and animated stat counters were all hand-coded to avoid bundle bloat. EmailJS was integrated for instant serverless contact form delivery without a backend."
+    },
+    "impact": {
+      "subtitle": "03 — The Impact",
+      "title": "Polished, Production-Ready Site in Two Files",
+      "description": "The entire site ships as just two files — index.html and script.js — with no build step required. Seven fully animated sections cover every business need: hero, services, menu, gallery, testimonials, about, and contact. Dark mode, a responsive mobile menu, and smooth-scroll navigation ensure a seamless experience across all devices and screen sizes."
+    }
+  },
+  "metrics": [
+    { "label": "Core Files", "value": "2", "subtext": "Zero build step" },
+    { "label": "Page Sections", "value": "7", "subtext": "Fully animated" },
+    { "label": "Client Satisfaction", "value": "98%", "subtext": "Reported by client" },
+    { "label": "JS Dependencies", "value": "0", "subtext": "Pure vanilla JS" }
+  ],
+  "architecture": {
+    "title": "CDN Stack & Serverless Form Delivery",
+    "subtitle": "Frontend Architecture",
+    "diagramType": "stack",
+    "description": "HTML5 Markup → Tailwind CSS CDN → Vanilla JS IntersectionObserver → EmailJS API",
+    "points": [
+      {
+        "iconName": "Layout",
+        "title": "UI & Styling System",
+        "description": "Tailwind CSS is loaded from CDN with a custom config extending the brand palette (primary pink, secondary purple, accent orange) and typography (Poppins + Playfair Display via Google Fonts). All responsive breakpoints, dark mode variants, and custom keyframe animations are authored in a single inline style block alongside Tailwind utility classes, keeping everything co-located and portable."
+      },
+      {
+        "iconName": "Zap",
+        "title": "Animations & Interactivity",
+        "description": "All animations are handled by vanilla JavaScript with no libraries. A hero background carousel crossfades four images every 5 seconds with clickable dot indicators. An IntersectionObserver drives the scroll-reveal system across four animation types (fade-up, fade-left, fade-right, zoom-in) and triggers animated stat counters in the About section. The testimonials carousel supports prev/next navigation and auto-advances every 4 seconds."
+      },
+      {
+        "iconName": "Globe",
+        "title": "Contact Form & Email Delivery",
+        "description": "The contact form integrates EmailJS, enabling serverless email delivery without any backend. Submissions are sent directly from the browser to a pre-configured EmailJS template, delivering full booking enquiry details — name, email, phone, event type, and message — straight to the client's inbox with no server required."
+      }
+    ]
+  },
+  "lessons": [
+    {
+      "iconName": "GaugeCircle",
+      "title": "Vanilla JS vs. a UI Framework",
+      "description": "Choosing vanilla JavaScript over React or Vue was a deliberate trade-off for this project. For a static marketing site with a modest interaction surface, a framework would have added build tooling complexity and bundle overhead with no real benefit. The result is a zero-dependency page that loads instantly — the right call for an audience where network conditions can vary significantly.",
+      "highlight": "zero-dependency"
+    },
+    {
+      "iconName": "SquareStack",
+      "title": "CDN Tailwind vs. a Build Pipeline",
+      "description": "Using the Tailwind CDN play script avoids a Node.js build step entirely, making the project instantly portable and deployable from any static host. The trade-off is that unused utility classes are not purged, slightly increasing CSS payload. For a small single-page site this is an acceptable cost, but a production-scale project would benefit from a PostCSS pipeline with PurgeCSS enabled.",
+      "highlight": "PostCSS pipeline with PurgeCSS"
+    }
+  ],
+  "docs": [],
+  "techStack": ["HTML5", "CSS3", "Tailwind CSS", "Vanilla JavaScript", "Font Awesome", "Google Fonts", "EmailJS"],
+  "links": {
+    "live": "#",
+    "repo": "https://github.com/mayormankind/kmj-website"
+  }
+}

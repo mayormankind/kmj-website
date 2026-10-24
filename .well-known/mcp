@@ -1,0 +1,34 @@
+{
+  "name": "KMJ Catering & Events",
+  "description": "Premium catering and event planning services based in Nigeria. Specializing in Nigerian cuisine, weddings, corporate events, birthdays, and custom event coordination.",
+  "version": "1.0.0",
+  "url": "https://kmj-beige.vercel.app",
+  "contact": {
+    "email": "info@kmjcatering.com",
+    "phone": "+2348141530308"
+  },
+  "capabilities": {
+    "tools": false,
+    "resources": [
+      {
+        "name": "homepage",
+        "uri": "https://kmj-beige.vercel.app/",
+        "description": "KMJ Catering & Events homepage with full service listings, menu, gallery, testimonials, and contact information"
+      },
+      {
+        "name": "llms-txt",
+        "uri": "https://kmj-beige.vercel.app/llms.txt",
+        "description": "Machine-readable agent instructions, services list, and when-to-use guidance"
+      },
+      {
+        "name": "sitemap",
+        "uri": "https://kmj-beige.vercel.app/sitemap.xml",
+        "description": "XML sitemap of all indexable pages"
+      }
+    ]
+  },
+  "transport": {
+    "type": "static",
+    "note": "This is a static informational site. Contact bookings@kmjcatering.com to make reservations or request catering quotes."
+  }
+}
