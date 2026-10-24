@@ -141,9 +141,10 @@
         
         // Generate gallery items
         const galleryContainer = document.querySelector('#gallery .grid');
-        galleryItems.forEach(item => {
-            const galleryItem = document.createElement('div');
-            galleryItem.className = 'gallery-item relative group overflow-hidden rounded-lg';
+galleryItems.forEach((item, i) => {
+    const galleryItem = document.createElement('div');
+    const span = i === 0 ? 'md:col-span-2 md:row-span-2' : (i === 3 ? 'md:col-span-2' : '');
+    galleryItem.className = `gallery-item relative group overflow-hidden rounded-lg ${span}`;
             galleryItem.innerHTML = `
                 <img src="${item.image}" alt="${item.caption}" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
                 <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
